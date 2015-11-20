@@ -1,3 +1,11 @@
+tip_bundle_test:
+    resource: "@TipBundleTestBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+lexik_translation_edition:
+    resource: "@LexikTranslationBundle/Resources/config/routing.yml"
+    prefix:   /my-prefix
