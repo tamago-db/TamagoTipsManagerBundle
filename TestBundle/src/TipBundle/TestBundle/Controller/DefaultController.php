@@ -8,6 +8,8 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('TipBundleTestBundle:Default:index.html.twig');
+        #return $this->render('TipBundleTestBundle:Default:index.html.twig');
+        $tip = "Dummy Tip";
+        return $this->render('TipBundleTestBundle:Default:index.html.twig', ["tip" => $tip]);
     }
 }
