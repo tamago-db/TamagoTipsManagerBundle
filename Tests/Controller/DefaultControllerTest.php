@@ -1,6 +1,6 @@
 <?php
 
-namespace TipBundle\TestBundle\Tests\Controller;
+namespace Tamago\TipsManagerBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

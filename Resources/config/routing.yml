@@ -1,5 +1,5 @@
 tip_bundle_test_homepage:
     path:     /tip
-    defaults: { _controller: TipBundleTestBundle:Default:index }
+    defaults: { _controller: TamagoTipsManagerBundle:Default:index }
 
 

@@ -1,12 +1,13 @@
 {
-    "name": "sanskriti/test-bundle",
+    "name": "tamago/tips-manager-bundle",
     "license": "proprietary",
-    "type": "project",
+    "type": "symfony-bundle",
     "autoload": {
-        "psr-4": {
-            "": "src/"
-        }
+        "psr-4": { "Tamago\\TipsManagerBundle\\": "" }
     },
+    "description": "Simple bundle to show tips",
+    "keywords": ["symfony", "bundle", "tips"],
+    "homepage": "http://www.tamago-db.com/",
     "require": {
         "php": ">=5.3.9",
         "symfony/symfony": "2.7.*",
