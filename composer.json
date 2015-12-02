@@ -15,9 +15,12 @@
         "doctrine/doctrine-bundle": "~1.4",
         "symfony/assetic-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
-        "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "lexik/translation-bundle": "~2.0",
         "doctrine/doctrine-migrations-bundle": "^1.0"
+    },
+    "repositories": {
+        "type": "vcs",
+        "url": "https://github.com/tamago-db/TamagoTipsManagerBundle"
     }
 }
