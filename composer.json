@@ -22,5 +22,6 @@
     "repositories": {
         "type": "vcs",
         "url": "https://github.com/tamago-db/TamagoTipsManagerBundle"
-    }
+    },
+    "minimum-stability": "dev"
 }
