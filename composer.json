@@ -25,5 +25,5 @@
         "url": "https://github.com/tamago-db/TamagoTipsManagerBundle"
         }
     ],
-    "minimum-stability": "dev-master"
+    "minimum-stability": "dev"
 }
