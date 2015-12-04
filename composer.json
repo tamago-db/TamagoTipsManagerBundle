@@ -19,11 +19,16 @@
         "lexik/translation-bundle": "~2.0",
         "doctrine/doctrine-migrations-bundle": "^1.0"
     },
-    "repositories": [
-        {
-        "type": "vcs",
-        "url": "https://github.com/tamago-db/TamagoTipsManagerBundle"
+    "repositories": {
+        "type": "package",
+        "package": {
+            "name": "tamago/tips-manager-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tamago-db/TamagoTipsManagerBundle",
+                "reference": "master"
+            }
         }
-    ],
-    "minimum-stability": "dev"
+    }
 }
