@@ -19,4 +19,8 @@
         "lexik/translation-bundle": "~2.0",
         "doctrine/doctrine-migrations-bundle": "^1.0"
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> a8af081acf8b753378950a4b658ad7accedd4b42
 }
