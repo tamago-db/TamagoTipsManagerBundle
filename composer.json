@@ -19,7 +19,7 @@
         "lexik/translation-bundle": "~2.0",
         "doctrine/doctrine-migrations-bundle": "^1.0"
     },
-    "repositories": {
+    "repositories": [{
         "type": "package",
         "package": {
             "name": "tamago/tips-manager-bundle",
@@ -30,5 +30,5 @@
                 "reference": "master"
             }
         }
-    }
+    }]
 }
