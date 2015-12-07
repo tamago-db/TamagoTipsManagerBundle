@@ -11,6 +11,6 @@
     "require": {
         "php": ">=5.3.9",
         "symfony/symfony": "~2.6.*",
-        "lexik/translation-bundle": "~2.0",
+        "lexik/translation-bundle": "~2.0"
     }
 }
