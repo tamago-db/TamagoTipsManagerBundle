@@ -1,10 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Sanskriti
- * Date: 11/20/2015
- * Time: 3:39 PM
- */
+
+namespace Tamago\TipsManagerBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
