@@ -4,46 +4,45 @@
 
 ## **Installation**
 
-	Add the bundle to your `composer.json` file:
+Add the bundle to your `composer.json` file:
 
-	```
-	require: {
-	    // ...
-	    "tamago/tips-manager-bundle": "dev-master"
-	}
-	```
-
-	Or install directly through composer with:
-
-	```
-	# Latest stable
-	composer require tamago/tips-manager-bundle dev-master
-	```
-
-	Then run a composer update:
-
-	```
-	composer update
-	# OR
-	composer update tamago/tips-manager-bundle # to only update the bundle
-	```
-
-	Register the bundle with your kernel:
-
-	```
-	// in AppKernel::registerBundles()
-
-	$bundles = array(
+```php
+require: {
 	// ...
-	    new Tamago\TipsManagerBundle\TamagoTipsManagerBundle(),
+	"tamago/tips-manager-bundle": "dev-master"
+}
+```
 
- 	   // ...
-	);
-	```
+Or install directly through composer with:
 
-	Then install the required assets:
+```
+# Latest stable
+composer require tamago/tips-manager-bundle dev-master
+```
 
-	```
-	./app/console assets:install
-	```
+Then run a composer update:
+
+```
+composer update
+# OR
+composer update tamago/tips-manager-bundle # to only update the bundle
+```
+
+Register the bundle with your kernel:
+
+```php
+// in AppKernel::registerBundles()
+
+$bundles = array(
+	// ...
+	new Tamago\TipsManagerBundle\TamagoTipsManagerBundle(),
+	// ...
+);
+```
+
+Then install the required assets:
+
+```
+./app/console assets:install
+```
 
