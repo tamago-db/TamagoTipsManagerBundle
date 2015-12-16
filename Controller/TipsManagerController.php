@@ -8,9 +8,11 @@ class TipsManagerController extends Controller
 {
     public function indexAction()
     {
-        //$tip = "Dummy Tip";
         $repository = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:Tip');
-        $tip = $repository->find(1);
+        $count = $repository->count();
+        $random = random_int(1, $count);
+        $tip = $repository->find($random);
+
         return $this->render('TamagoTipsManagerBundle:Default:index.html.twig', ["tip" => $tip]);
     }
 }

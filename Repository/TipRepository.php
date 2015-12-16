@@ -12,5 +12,8 @@ use Doctrine\ORM\EntityRepository;
 use Tamago\TipsManagerBundle\Entity\Tip;
 
 class TipRepository extends EntityRepository{
-
+    public function count()
+    {
+        return $this->createQueryBuilder('t')->select('COUNT(t)')->getQuery()->getSingleScalarResult();
+    }
 }
