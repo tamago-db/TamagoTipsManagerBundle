@@ -40,9 +40,42 @@ $bundles = array(
 );
 ```
 
-Then install the required assets:
+## **Integration**
 
+#### Download the hinclude.js
+
+Save it under 'web' directory of your application
+Then include it in the required html view:
+
+```html
+<html>
+    <head>
+        <title>...</title>
+        // ...
+        <script src="/hinclude.js" type="text/javascript"></script>
+        // ...
 ```
-./app/console assets:install
+
+Add render_hinclude to the pages you want the tips to show up:
+
+```html
+{{ render_hinclude(controller('TamagoTipsManagerBundle:TipsManager:index')) }}
 ```
+
+#### Routing
+
+To use the lexik based admin pages, add the routing file to your application:
+
+```yml
+# app/config/routing.yml
+lexik_translation_edition:
+    resource: "@LexikTranslationBundle/Resources/config/routing.yml"
+    prefix:   /my-prefix
+```
+
+The translations edition page will be available here:
+
+* `/my-prefix/grid` for the translations grid
+
+___________________
 
