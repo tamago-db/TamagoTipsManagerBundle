@@ -15,14 +15,25 @@ class TipsManagerController extends Controller
         $random = random_int(1, $count);
         $tip = $repository->find($random);
 
+        $tip->setViewCount($tip->getViewCount() + 1);
+        $this->getDoctrine()->getManager()->flush();
+
         return $this->render('TamagoTipsManagerBundle:Default:index.html.twig', ["tip" => $tip]);
     }
 
-    public function lexikAction()
+    public function feedbackAction($id, $feedback)
     {
-        $repository = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:Tip');
-        $tip = $repository->find(90);
-        return $this->render('TamagoTipsManagerBundle:Default:index.html.twig', ["tip" => $tip]);
+        $repository = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
+        $tip = $repository->find($id);
+
+        switch($feedback){
+            case 'like': $tip->setLikes($tip->getLikes() + 1);
+                break;
+            case 'dislike': $tip->setDislikes($tip->getDislikes() + 1);
+                break;
+        }
+        $this->getDoctrine()->getManager()->flush();
+
     }
 
 }

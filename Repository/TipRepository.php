@@ -16,4 +16,10 @@ class TipRepository extends EntityRepository{
     {
         return $this->createQueryBuilder('t')->select('COUNT(t)')->getQuery()->getSingleScalarResult();
     }
+
+    public function updateViewCount($id)
+    {
+        $this->createQueryBuilder('t')->update('t')->set('t.viewCount', 't.viewCount + 1')->where('t.id = ?1')->setParameter(1, $id)->getQuery();
+
+    }
 }

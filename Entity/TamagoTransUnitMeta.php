@@ -47,6 +47,54 @@ class TamagoTransUnitMeta
     /**
      * @return mixed
      */
+    public function getViewCount()
+    {
+        return $this->viewCount;
+    }
+
+    /**
+     * @param mixed $viewCount
+     */
+    public function setViewCount($viewCount)
+    {
+        $this->viewCount = $viewCount;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLikes()
+    {
+        return $this->likes;
+    }
+
+    /**
+     * @param mixed $likes
+     */
+    public function setLikes($likes)
+    {
+        $this->likes = $likes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDislikes()
+    {
+        return $this->dislikes;
+    }
+
+    /**
+     * @param mixed $dislikes
+     */
+    public function setDislikes($dislikes)
+    {
+        $this->dislikes = $dislikes;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getLexikTransUnitTranslation()
     {
         return $this->lexikTransUnitTranslation;
@@ -58,6 +106,22 @@ class TamagoTransUnitMeta
     public function setLexikTransUnitTranslation($lexikTransUnitTranslation)
     {
         $this->lexikTransUnitTranslation = $lexikTransUnitTranslation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
 }
