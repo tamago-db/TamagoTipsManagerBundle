@@ -8,8 +8,8 @@ Add the bundle to your `composer.json` file:
 
 ```php
 require: {
-	// ...
-	"tamago/tips-manager-bundle": "dev-master"
+    // ...
+    "tamago/tips-manager-bundle": "dev-master"
 }
 ```
 
@@ -34,9 +34,9 @@ Register the bundle with your kernel:
 // in AppKernel::registerBundles()
 
 $bundles = array(
-	// ...
-	new Tamago\TipsManagerBundle\TamagoTipsManagerBundle(),
-	// ...
+    // ...
+    new Tamago\TipsManagerBundle\TamagoTipsManagerBundle(),
+    // ...
 );
 ```
 
@@ -45,4 +45,3 @@ Then install the required assets:
 ```
 ./app/console assets:install
 ```
-
