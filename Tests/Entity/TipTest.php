@@ -7,11 +7,11 @@
  */
 
 namespace Tamago\TipsManagerBundle\Tests\Entity;
+use Tamago\TipsManagerBundle\Entity\Tip;
 
+class TipTest extends \PHPUnit_Framework_TestCase{
 
-class TipTest {
-
-    public function getIdTest(){
+    public function testGetId(){
         $tip = new Tip();
         $tip->setId(4);
         $result = $tip->getId();

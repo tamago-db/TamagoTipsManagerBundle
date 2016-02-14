@@ -3,3 +3,6 @@ tip_bundle_test_homepage:
     defaults: { _controller: TamagoTipsManagerBundle:TipsManager:index }
 
 
+lexik_tip:
+    path:     /lexik
+    defaults: { _controller: TamagoTipsManagerBundle:TipsManager:lexik }
