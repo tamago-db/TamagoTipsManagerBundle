@@ -8,8 +8,8 @@ Add the bundle to your `composer.json` file:
 
 ```php
 require: {
-	// ...
-	"tamago/tips-manager-bundle": "dev-master"
+    // ...
+    "tamago/tips-manager-bundle": "dev-master"
 }
 ```
 
@@ -34,11 +34,13 @@ Register the bundle with your kernel:
 // in AppKernel::registerBundles()
 
 $bundles = array(
-	// ...
-	new Tamago\TipsManagerBundle\TamagoTipsManagerBundle(),
-	// ...
+    // ...
+    new Tamago\TipsManagerBundle\TamagoTipsManagerBundle(),
+    // ...
 );
 ```
+
+@todo What about registering Lexik?  Remember that some users may already have it installed.
 
 ## **Integration**
 
@@ -55,6 +57,8 @@ Then include it in the required html view:
         <script src="/hinclude.js" type="text/javascript"></script>
         // ...
 ```
+
+@todo Would it make sense to reference the Symfony documentation about hinclude?
 
 Add render_hinclude to the pages you want the tips to show up:
 
@@ -73,9 +77,12 @@ lexik_translation_edition:
     prefix:   /my-prefix
 ```
 
+@todo We should specify a better prefix
+
 The translations edition page will be available here:
 
 * `/my-prefix/grid` for the translations grid
 
 ___________________
+
 
