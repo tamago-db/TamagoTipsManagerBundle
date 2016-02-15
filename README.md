@@ -40,6 +40,8 @@ $bundles = array(
 );
 ```
 
+@todo What about registering Lexik?  Remember that some users may already have it installed.
+
 ## **Integration**
 
 #### Download the hinclude.js
@@ -55,6 +57,8 @@ Then include it in the required html view:
         <script src="/hinclude.js" type="text/javascript"></script>
         // ...
 ```
+
+@todo Would it make sense to reference the Symfony documentation about hinclude?
 
 Add render_hinclude to the pages you want the tips to show up:
 
@@ -72,6 +76,8 @@ lexik_translation_edition:
     resource: "@LexikTranslationBundle/Resources/config/routing.yml"
     prefix:   /my-prefix
 ```
+
+@todo We should specify a better prefix
 
 The translations edition page will be available here:
 
