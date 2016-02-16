@@ -28,7 +28,7 @@ composer update
 composer update tamago/tips-manager-bundle # to only update the bundle
 ```
 
-Register the bundle with your kernel:
+Register the bundles with your kernel:
 
 ```php
 // in AppKernel::registerBundles()
@@ -36,9 +36,12 @@ Register the bundle with your kernel:
 $bundles = array(
     // ...
     new Tamago\TipsManagerBundle\TamagoTipsManagerBundle(),
+    new Lexik\Bundle\TranslationBundle\LexikTranslationBundle(),
     // ...
 );
 ```
+
+
 
 @todo What about registering Lexik?  Remember that some users may already have it installed.
 
