@@ -9,12 +9,17 @@ class TipsManagerController extends Controller
 {
     public function indexAction()
     {
+        // @todo Instead of using the 'TamagoTipsManagerBundle:TamagoTransUnitMeta' repository, read tips directly
+        // from 'LexikTranslationBundle:TransUnit'
 
         $repository = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
         $count = $repository->count();
         $random = random_int(1, $count);
         $tip = $repository->find($random);
 
+        // @todo Once a random tip has been retrieved, update meta data via our 'TamagoTipsManagerBundle:TamagoTransUnitMeta'
+        // repository
+        
         $tip->setViewCount($tip->getViewCount() + 1);
         $this->getDoctrine()->getManager()->flush();
 
@@ -33,7 +38,5 @@ class TipsManagerController extends Controller
                 break;
         }
         $this->getDoctrine()->getManager()->flush();
-
     }
-
 }
