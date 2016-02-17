@@ -2,12 +2,6 @@ tip_bundle_test_homepage:
     path:     /tip
     defaults: { _controller: TamagoTipsManagerBundle:TipsManager:index }
 
-
-lexik_tip:
-    path:     /lexik
-    defaults: { _controller: TamagoTipsManagerBundle:TipsManager:lexik }
-
-
 tip_feedback:
     path:     /tip/{id}/feedback/{feedback}
     defaults: { _controller: TamagoTipsManagerBundle:TipsManager:feedback }

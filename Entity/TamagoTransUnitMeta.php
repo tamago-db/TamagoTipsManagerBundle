@@ -41,6 +41,7 @@ class TamagoTransUnitMeta
 
     /**
      * @ORM\Column(type="integer")
+     * @ORM\Column(name="view_count")
      */
     protected $viewCount;
 

@@ -36,18 +36,14 @@ Register the bundles with your kernel:
 $bundles = array(
     // ...
     new Tamago\TipsManagerBundle\TamagoTipsManagerBundle(),
-    new Lexik\Bundle\TranslationBundle\LexikTranslationBundle(),
+    new Lexik\Bundle\TranslationBundle\LexikTranslationBundle(), //if you don't have this installed already
     // ...
 );
 ```
 
-
-
-@todo What about registering Lexik?  Remember that some users may already have it installed.
-
 ## **Integration**
 
-#### Download the hinclude.js
+#### Download the hinclude.js (from [hinclude.js](http://mnot.github.io/hinclude/))
 
 Save it under 'web' directory of your application
 Then include it in the required html view:
@@ -61,13 +57,15 @@ Then include it in the required html view:
         // ...
 ```
 
-@todo Would it make sense to reference the Symfony documentation about hinclude?
-
 Add render_hinclude to the pages you want the tips to show up:
 
 ```html
 {{ render_hinclude(controller('TamagoTipsManagerBundle:TipsManager:index')) }}
 ```
+
+OR
+
+Refer to the Symfony documentation about hinclude [here](http://symfony.com/doc/current/book/templating.html#asynchronous-content-with-hinclude-js)
 
 #### Routing
 
@@ -77,14 +75,12 @@ To use the lexik based admin pages, add the routing file to your application:
 # app/config/routing.yml
 lexik_translation_edition:
     resource: "@LexikTranslationBundle/Resources/config/routing.yml"
-    prefix:   /my-prefix
+    prefix:   /lexik
 ```
-
-@todo We should specify a better prefix
 
 The translations edition page will be available here:
 
-* `/my-prefix/grid` for the translations grid
+* `/lexik/grid` for the translations grid
 
 ___________________
 
