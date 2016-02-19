@@ -12,7 +12,8 @@ class TipsManagerController extends Controller
         // @todo Instead of using the 'TamagoTipsManagerBundle:TamagoTransUnitMeta' repository, read tips directly
         // from 'LexikTranslationBundle:TransUnit'
 
-        $repository = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
+        //$repository = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
+        $repository = $this->getDoctrine()->getManager()->getRepository('LexikTranslationBundle:TransUnit');
         $count = $repository->count();
         $random = random_int(1, $count);
         $tip = $repository->find($random);
@@ -20,8 +21,8 @@ class TipsManagerController extends Controller
         // @todo Once a random tip has been retrieved, update meta data via our 'TamagoTipsManagerBundle:TamagoTransUnitMeta'
         // repository
         
-        $tip->setViewCount($tip->getViewCount() + 1);
-        $this->getDoctrine()->getManager()->flush();
+        /*$tip->setViewCount($tip->getViewCount() + 1);
+        $this->getDoctrine()->getManager()->flush();*/
 
         return $this->render('TamagoTipsManagerBundle:Default:index.html.twig', ["tip" => $tip]);
     }

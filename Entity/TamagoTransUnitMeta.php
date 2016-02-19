@@ -40,8 +40,7 @@ class TamagoTransUnitMeta
     protected $dislikes;
 
     /**
-     * @ORM\Column(type="integer")
-     * @ORM\Column(name="view_count")
+     * @ORM\Column(type="integer", name="view_count")
      */
     protected $viewCount;
 
