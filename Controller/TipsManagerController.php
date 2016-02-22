@@ -39,5 +39,7 @@ class TipsManagerController extends Controller
                 break;
         }
         $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirect($this->generateUrl('tip_bundle_test_homepage'));
     }
 }

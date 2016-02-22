@@ -5,3 +5,4 @@ tip_bundle_test_homepage:
 tip_feedback:
     path:     /tip/{id}/feedback/{feedback}
     defaults: { _controller: TamagoTipsManagerBundle:TipsManager:feedback }
+
