@@ -17,4 +17,11 @@ class TipRepository extends EntityRepository{
     {
         return $this->createQueryBuilder('t')->select('COUNT(t)')->getQuery()->getSingleScalarResult();
     }
+
+    public function stats()
+    {
+        $s = $this->createQueryBuilder('s')->select('s.id, s.viewCount, s.likes, s.dislikes')->getQuery();
+        $stats = $s->getArrayResult();
+        return $stats;
+    }
 }

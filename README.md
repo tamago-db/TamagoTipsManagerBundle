@@ -69,18 +69,22 @@ Refer to the Symfony documentation about hinclude [here](http://symfony.com/doc/
 
 #### Routing
 
-To use the lexik based admin pages, add the routing file to your application:
+To use the tamago based admin pages, add this to routing file of your application:
 
 ```yml
 # app/config/routing.yml
-lexik_translation_edition:
-    resource: "@LexikTranslationBundle/Resources/config/routing.yml"
-    prefix:   /lexik
+tip_bundle_homepage:
+    resource: "@TamagoTipsManagerBundle/Resources/config/routing.yml"
+    prefix:   /tamago
 ```
 
-The translations edition page will be available here:
+The stats page will be available here:
 
-* `/lexik/grid` for the translations grid
+* `/tamago/tip/stats`
+
+The page to edit/add tips will be available here:
+
+* `/tamago/tip/editor`
 
 ___________________
 

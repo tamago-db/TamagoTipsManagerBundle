@@ -17,10 +17,10 @@ use Lexik\Bundle\TranslationBundle\Entity\Translation;
 class TamagoTransUnitMeta
 {
     /**
-     * @ORM\OneToOne(targetEntity="Lexik\Bundle\TranslationBundle\Entity\Translation")
-     * @ORM\JoinColumn(name="lexik_trans_unit_translation_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Lexik\Bundle\TranslationBundle\Entity\TransUnit")
+     * @ORM\JoinColumn(name="lexik_trans_unit_id", referencedColumnName="id")
      */
-    protected $lexikTransUnitTranslation;
+    protected $lexikTransUnit;
 
     /**
      * @ORM\Column(type="integer")
@@ -95,17 +95,17 @@ class TamagoTransUnitMeta
     /**
      * @return mixed
      */
-    public function getLexikTransUnitTranslation()
+    public function getLexikTransUnit()
     {
-        return $this->lexikTransUnitTranslation;
+        return $this->lexikTransUnit;
     }
 
     /**
      * @param mixed $lexikTransUnitTranslation
      */
-    public function setLexikTransUnitTranslation($lexikTransUnitTranslation)
+    public function setLexikTransUnit($lexikTransUnit)
     {
-        $this->lexikTransUnitTranslation = $lexikTransUnitTranslation;
+        $this->lexikTransUnit = $lexikTransUnit;
     }
 
     /**

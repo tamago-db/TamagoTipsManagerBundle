@@ -1,6 +1,5 @@
 <div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    {#<span class="label label-info">{{ tip.lexikTransUnitTranslation.content }}</span>#}
     <span class="label label-info">{{ tip.translation(app.request.locale).content }}</span>
 
     <a href="{{  path('tip_feedback', {'id': tip.id, 'feedback': 'like'}) }}"><i class="fa fa-thumbs-up" id="thumbs-up"></i></a>

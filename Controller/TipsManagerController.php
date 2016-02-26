@@ -9,10 +9,6 @@ class TipsManagerController extends Controller
 {
     public function indexAction()
     {
-        // @todo Instead of using the 'TamagoTipsManagerBundle:TamagoTransUnitMeta' repository, read tips directly
-        // from 'LexikTranslationBundle:TransUnit'
-
-        //$repository = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
         $repository = $this->getDoctrine()->getManager()->getRepository('LexikTranslationBundle:TransUnit');
         $count = $repository->count();
         $random = random_int(1, $count);
@@ -40,6 +36,13 @@ class TipsManagerController extends Controller
         }
         $this->getDoctrine()->getManager()->flush();
 
-        return $this->redirect($this->generateUrl('tip_bundle_test_homepage'));
+        return $this->redirect($this->generateUrl('tip_bundle_homepage'));
+    }
+
+    public function statsAction()
+    {
+        $repository = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
+        $stats = $repository->stats();
+        return $this->render('TamagoTipsManagerBundle:Default:stats.html.twig', ["stats" => $stats]);
     }
 }
