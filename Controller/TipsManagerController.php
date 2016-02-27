@@ -12,15 +12,18 @@ class TipsManagerController extends Controller
         $repository = $this->getDoctrine()->getManager()->getRepository('LexikTranslationBundle:TransUnit');
         $count = $repository->count();
         $random = random_int(1, $count);
-        $tip = $repository->find($random);
+        $transUnit = $repository->find($random);
 
         // @todo Once a random tip has been retrieved, update meta data via our 'TamagoTipsManagerBundle:TamagoTransUnitMeta'
         // repository
-        
-        /*$tip->setViewCount($tip->getViewCount() + 1);
-        $this->getDoctrine()->getManager()->flush();*/
 
-        return $this->render('TamagoTipsManagerBundle:Default:index.html.twig', ["tip" => $tip]);
+        $repository = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
+        $metaEntity = $repository->singleton($transUnit);
+
+        $metaEntity->setViewCount($metaEntity->getViewCount() + 1);
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->render('TamagoTipsManagerBundle:Default:index.html.twig', ["tip" => $transUnit]);
     }
 
     public function feedbackAction($id, $feedback)

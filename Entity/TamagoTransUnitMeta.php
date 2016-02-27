@@ -17,10 +17,9 @@ use Lexik\Bundle\TranslationBundle\Entity\Translation;
 class TamagoTransUnitMeta
 {
     /**
-     * @ORM\OneToOne(targetEntity="Lexik\Bundle\TranslationBundle\Entity\TransUnit")
-     * @ORM\JoinColumn(name="lexik_trans_unit_id", referencedColumnName="id")
+     * @ORM\Column(type="integer")
      */
-    protected $lexikTransUnit;
+    protected $lexikTransUnitId;
 
     /**
      * @ORM\Column(type="integer")
@@ -44,6 +43,10 @@ class TamagoTransUnitMeta
      */
     protected $viewCount;
 
+    /**
+     * @ORM\Column(type="string", length="2")
+     */
+    protected $locale;
     /**
      * @return mixed
      */
@@ -95,17 +98,17 @@ class TamagoTransUnitMeta
     /**
      * @return mixed
      */
-    public function getLexikTransUnit()
+    public function getLexikTransUnitId()
     {
-        return $this->lexikTransUnit;
+        return $this->lexikTransUnitId;
     }
 
     /**
      * @param mixed $lexikTransUnitTranslation
      */
-    public function setLexikTransUnit($lexikTransUnit)
+    public function setLexikTransUnitId($lexikTransUnitId)
     {
-        $this->lexikTransUnit = $lexikTransUnit;
+        $this->lexikTransUnitId = $lexikTransUnitId;
     }
 
     /**
@@ -122,6 +125,22 @@ class TamagoTransUnitMeta
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
+     * @param mixed $locale
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
     }
 
 }
