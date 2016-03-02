@@ -14,8 +14,6 @@ class TipsManagerController extends Controller
         $random = random_int(1, $count);
         $transUnit = $repository->find($random);
 
-        // @todo Once a random tip has been retrieved, update meta data via our 'TamagoTipsManagerBundle:TamagoTransUnitMeta'
-        // repository
 
         $repository = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
         $metaEntity = $repository->singleton($transUnit);
