@@ -10,6 +10,11 @@ tip_stats:
     path:     /tip/stats
     defaults: { _controller: TamagoTipsManagerBundle:TipsManager:stats }
 
+lexik_translation_edition:
+    resource: "@LexikTranslationBundle/Resources/config/routing.yml"
+
 _tip_lexik_edition:
     path:     /tip/editor
     defaults: { _controller: LexikTranslationBundle:Translation:grid }
+
+
