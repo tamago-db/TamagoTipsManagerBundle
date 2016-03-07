@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 </head>
 <body>
+{% trans_default_domain 'TamagoTipsManagerBundle' %}
     <div class="container">
         <h1>Tamago Tips Stats</h1>
         <hr>
@@ -13,12 +14,12 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th style="text-align: center">Id</th>
-                        <th style="text-align: center">Key</th>
-                        <th style="text-align: center">Locale</th>
-                        <th style="text-align: center">View Count</th>
-                        <th style="text-align: center">Likes</th>
-                        <th style="text-align: center">Dislikes</th>
+                        <th style="text-align: center">{{ 'translations.id'|trans({}, 'TamagoTipsManagerBundle') }}</th>
+                        <th style="text-align: center">{{ 'translations.key'|trans({}, 'TamagoTipsManagerBundle') }}</th>
+                        <th style="text-align: center">{{ 'translations.locale'|trans({}, 'TamagoTipsManagerBundle') }}</th>
+                        <th style="text-align: center">{{ 'translations.view_count'|trans({}, 'TamagoTipsManagerBundle') }}</th>
+                        <th style="text-align: center">{{ 'translations.likes'|trans({}, 'TamagoTipsManagerBundle') }}</th>
+                        <th style="text-align: center">{{ 'translations.dislikes'|trans({}, 'TamagoTipsManagerBundle') }}</th>
                     </tr>
                 </thead>
                 <tbody>
