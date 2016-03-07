@@ -93,7 +93,7 @@ The page to edit/add tips will be available here:
 
 * `/tamago/tip/editor`
 
-## **Import translations 
+## **Import translations** 
 
 To import translations files content into your database just run the following command 
 
