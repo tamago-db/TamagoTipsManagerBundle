@@ -67,6 +67,13 @@ OR
 
 Refer to the Symfony documentation about hinclude [here](http://symfony.com/doc/current/book/templating.html#asynchronous-content-with-hinclude-js)
 
+#### Creating the database schema
+
+```html
+php app/console doctrine:database:create 
+php app/console doctrine:schema:update
+```
+
 #### Routing
 
 To use the tamago based admin pages, add this to routing file of your application:
@@ -86,6 +93,14 @@ The page to edit/add tips will be available here:
 
 * `/tamago/tip/editor`
 
-___________________
+## **Import translations 
+
+To import translations files content into your database just run the following command 
+
+```html
+php app/console lexik:translations:import TamagoTipsManagerBundle 
+```
+
+This command will import sample translations files into the database.
 
 
