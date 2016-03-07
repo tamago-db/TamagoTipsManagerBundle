@@ -9,7 +9,6 @@
 namespace Tamago\TipsManagerBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Lexik\Bundle\TranslationBundle\Entity\Translation;
 use Tamago\TipsManagerBundle\Entity\TamagoTransUnitMeta;
 
 class TipRepository extends EntityRepository{
@@ -48,3 +47,4 @@ class TipRepository extends EntityRepository{
         return $t;
     }
 }
+

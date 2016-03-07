@@ -3,7 +3,7 @@
 namespace Tamago\TipsManagerBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Tamago\TipsManagerBundle\Entity\Tip;
+
 
 class TipsManagerController extends Controller
 {
