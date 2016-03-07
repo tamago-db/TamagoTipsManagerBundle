@@ -8,7 +8,6 @@
 
 namespace Tamago\TipsManagerBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
-use Lexik\Bundle\TranslationBundle\Entity\Translation;
 
 /**
  * @ORM\Table(name="tamago_trans_unit_meta")
@@ -17,7 +16,7 @@ use Lexik\Bundle\TranslationBundle\Entity\Translation;
 class TamagoTransUnitMeta
 {
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="lexik_trans_unit_id")
      */
     protected $lexikTransUnitId;
 
@@ -44,9 +43,15 @@ class TamagoTransUnitMeta
     protected $viewCount;
 
     /**
-     * @ORM\Column(type="string", length="2")
+     * @ORM\Column(type="string", length=2)
      */
     protected $locale;
+
+    /**
+     * @ORM\Column(type="string", name="lexik_key_name")
+     */
+    protected $key;
+
     /**
      * @return mixed
      */
@@ -141,6 +146,22 @@ class TamagoTransUnitMeta
     public function setLocale($locale)
     {
         $this->locale = $locale;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getKey()
+    {
+        return $this->key;
+    }
+
+    /**
+     * @param mixed $key
+     */
+    public function setKey($key)
+    {
+        $this->key = $key;
     }
 
 }
