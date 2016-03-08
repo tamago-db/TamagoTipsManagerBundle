@@ -4,4 +4,18 @@
 
     <a href="{{  path('tip_feedback', {'id': tip.id, 'feedback': 'like'}) }}"><i class="fa fa-thumbs-up" id="thumbs-up"></i></a>
     <a href="{{  path('tip_feedback', {'id': tip.id, 'feedback': 'dislike'}) }}"><i class="fa fa-thumbs-down" id="thumbs-down"></i></a>
+    <script>
+        $('a.thumb').on('click', function(event) {
+            event.preventDefault();
+            //alert('some thumb clicked!!' + $(this).attr('id'))
+            $.get($(this).attr('href'), null, function(event) {
+                alert('got a response')
+
+                location.reload();
+
+            });
+
+        });
+    </script>
+
 </div>
