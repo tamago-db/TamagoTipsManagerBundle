@@ -3,12 +3,12 @@
 
 
                 <div id="reload">
-                    <span class="label label-info" style="margin-left: auto">{{ tip.translation(app.request.locale).content }}</span>
+                    <span class="label label-info">{{ tip.translation(app.request.locale).content }}</span> </div>
 
                     <a id="thumbs-up" class="thumb" href="{{ path('tip_feedback', {'id': tip.id, 'feedback': 'like'}) }}"><i class="fa fa-thumbs-up"></i></a>
                     <a id="thumbs-down" class="thumb" href="{{ path('tip_feedback', {'id': tip.id, 'feedback': 'dislike'}) }}"><i class="fa fa-thumbs-down"></i></a>
+                    <a  class="next"  href="#"><i class="fa fa-arrow-right"></i></a>
 
-                </div>
 
 
 
@@ -24,6 +24,21 @@
             });
 
         });
+    </script>
+    <script>
+        $('a.next').on('click', function(event) {
+            event.preventDefault();
+            //alert('some thumb clicked!!' + $(this).attr('id'))
+
+               location.reload();
+
+     // $('a.next').click(function() {
+       //   $.get("/ajax/content", function( data ) {
+         //      $('#reload').html(data);
+           // });
+      // });
+
+       });
     </script>
 
 </div>
