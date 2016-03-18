@@ -95,12 +95,11 @@ The page to edit/add tips will be available here:
 
 ## **Import translations** 
 
-To import translations files content into your database just run the following command 
+To import translations files content into your database, place tip translation YAML files somewhere in your project
+and import from the directory.  For example:
 
 ```html
-php app/console lexik:translations:import TamagoTipsManagerBundle 
+php app/console lexik:translations:import -p app/Resources/translations/tips/
 ```
 
-This command will import sample translations files into the database.
-
-
+See [tips-example.en.yml](Resources/translations/tips/tips-example.en.yml) for an example of a simple translation file.
