@@ -57,10 +57,10 @@ Then include it in the required html view:
         // ...
 ```
 
-Add render_hinclude to the pages you want the tips to show up:
+Render in the pages where you want the tips to show up:
 
 ```html
-{{ render_hinclude(controller('TamagoTipsManagerBundle:TipsManager:index')) }}
+{{ render(controller('TamagoTipsManagerBundle:TipsManager:index')) }}
 ```
 
 OR
