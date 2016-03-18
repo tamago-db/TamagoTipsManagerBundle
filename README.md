@@ -82,16 +82,16 @@ To use the tamago based admin pages, add this to routing file of your applicatio
 # app/config/routing.yml
 tip_bundle_homepage:
     resource: "@TamagoTipsManagerBundle/Resources/config/routing.yml"
-    prefix:   /tamago
+    prefix:   /_tips
 ```
 
 The stats page will be available here:
 
-* `/tamago/tip/stats`
+* `/_tips/stats`
 
 The page to edit/add tips will be available here:
 
-* `/tamago/tip/editor`
+* `/_tips/editor`
 
 ## **Import translations** 
 

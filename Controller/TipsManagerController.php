@@ -14,7 +14,7 @@ class TipsManagerController extends Controller
 
         $transUnits = $repositoryTransUnit->findByDomain('tips-general');
 
-        // 404 if not tips
+        // 404 if no tips
         if (!$total = count($transUnits)) {
             return new Response('', Response::HTTP_NOT_FOUND);
         }
