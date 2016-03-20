@@ -57,10 +57,10 @@ Then include it in the required html view:
         // ...
 ```
 
-Add render_hinclude to the pages you want the tips to show up:
+Render in the pages where you want the tips to show up:
 
 ```html
-{{ render_hinclude(controller('TamagoTipsManagerBundle:TipsManager:index')) }}
+{{ render(controller('TamagoTipsManagerBundle:TipsManager:index')) }}
 ```
 
 OR
@@ -82,25 +82,24 @@ To use the tamago based admin pages, add this to routing file of your applicatio
 # app/config/routing.yml
 tip_bundle_homepage:
     resource: "@TamagoTipsManagerBundle/Resources/config/routing.yml"
-    prefix:   /tamago
+    prefix:   /_tips
 ```
 
 The stats page will be available here:
 
-* `/tamago/tip/stats`
+* `/_tips/stats`
 
 The page to edit/add tips will be available here:
 
-* `/tamago/tip/editor`
+* `/_tips/editor`
 
 ## **Import translations** 
 
-To import translations files content into your database just run the following command 
+To import translations files content into your database, place tip translation YAML files somewhere in your project
+and import from the directory.  For example:
 
 ```html
-php app/console lexik:translations:import TamagoTipsManagerBundle 
+php app/console lexik:translations:import -p app/Resources/translations/tips/
 ```
 
-This command will import sample translations files into the database.
-
-
+See [tips-example.en.yml](Resources/translations/tips/tips-example.en.yml) for an example of a simple translation file.

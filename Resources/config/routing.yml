@@ -1,20 +1,21 @@
-tip_bundle_homepage:
-    path:     /tip
-    defaults: { _controller: TamagoTipsManagerBundle:TipsManager:index }
-
 tip_feedback:
-    path:     /tip/{id}/feedback/{feedback}
+    path: /tip/{id}/feedback/{feedback}
     defaults: { _controller: TamagoTipsManagerBundle:TipsManager:feedback }
 
+tip_show:
+    path: /tip/show
+    defaults: { _controller: TamagoTipsManagerBundle:TipsManager:index }
+
 tip_stats:
-    path:     /tip/stats
+    path: /stats
     defaults: { _controller: TamagoTipsManagerBundle:TipsManager:stats }
 
 lexik_translation_edition:
     resource: "@LexikTranslationBundle/Resources/config/routing.yml"
+    prefix: /_tips
 
 _tip_lexik_edition:
-    path:     /tip/editor
+    path: /editor
     defaults: { _controller: LexikTranslationBundle:Translation:grid }
 
 
