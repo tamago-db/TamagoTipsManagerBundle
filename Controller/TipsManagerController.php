@@ -9,6 +9,36 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TipsManagerController extends Controller
 {
+    private function getTip(Request $request){
+        $repositoryTransUnit = $this->getDoctrine()->getManager()->getRepository('LexikTranslationBundle:TransUnit');
+
+        $transUnits = $repositoryTransUnit->findByDomain('tips-general');
+
+        // 404 if no tips
+        if (!$total = count($transUnits)) {
+            return new Response('');
+        }
+
+        // Get a random tip
+        $random = random_int(0, $total-1);
+        $transUnit = $transUnits[$random];
+
+        // 404 if no translation for selected tip
+        // @todo Implement a fallback or limit query to tips with translations
+        if (!$transUnit->hasTranslation($request->getLocale())) {
+            return new Response('');
+        }
+
+        // Retrieve meta data
+        $repositoryTamago = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
+        $metaEntity = $repositoryTamago->singleton($transUnit, $request->getLocale());
+
+
+        // Increment view count
+        $metaEntity->setViewCount($metaEntity->getViewCount() + 1);
+        $this->getDoctrine()->getManager()->flush();
+        return $transUnit;
+    }
     public function indexAction(Request $request)
     {
         $repositoryTransUnit = $this->getDoctrine()->getManager()->getRepository('LexikTranslationBundle:TransUnit');
@@ -42,7 +72,7 @@ class TipsManagerController extends Controller
         return $this->render('TamagoTipsManagerBundle:Default:index.html.twig', ['tip' => $transUnit]);
     }
 
-    public function feedbackAction($id, $feedback)
+    public function feedbackAction($id, $feedback, Request $request)
     {
         $repository = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
         $tip = $repository->find($id);
@@ -55,7 +85,37 @@ class TipsManagerController extends Controller
         }
         $this->getDoctrine()->getManager()->flush();
 
-        return new JsonResponse(['tip' => 'Example']);
+        $repositoryTransUnit = $this->getDoctrine()->getManager()->getRepository('LexikTranslationBundle:TransUnit');
+
+        $transUnits = $repositoryTransUnit->findByDomain('tips-general');
+
+        // 404 if no tips
+        if (!$total = count($transUnits)) {
+            return new Response('');
+        }
+
+        // Get a random tip
+        $random = random_int(0, $total-1);
+        $transUnit = $transUnits[$random];
+
+        // 404 if no translation for selected tip
+        // @todo Implement a fallback or limit query to tips with translations
+        if (!$transUnit->hasTranslation($request->getLocale())) {
+            return new Response('');
+        }
+
+        // Retrieve meta data
+        $repositoryTamago = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
+        $metaEntity = $repositoryTamago->singleton($transUnit, $request->getLocale());
+
+
+        // Increment view count
+        $metaEntity->setViewCount($metaEntity->getViewCount() + 1);
+        $this->getDoctrine()->getManager()->flush();
+
+        $tip = $this->render('TamagoTipsManagerBundle:Default:tip.html.twig', ['tip' => $transUnit]);
+
+        return $tip;
     }
 
     public function statsAction()
