@@ -3,6 +3,7 @@
 namespace Tamago\TipsManagerBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -54,7 +55,7 @@ class TipsManagerController extends Controller
         }
         $this->getDoctrine()->getManager()->flush();
 
-        return $this->redirect($this->generateUrl('tip_bundle_homepage'));
+        return new JsonResponse(['tip' => 'Example']);
     }
 
     public function statsAction()

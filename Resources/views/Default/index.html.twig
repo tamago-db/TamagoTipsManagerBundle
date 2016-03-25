@@ -4,7 +4,7 @@
     }
 </style>
 
-<div id="reload" class="alert alert-info">
+<div id="tamago-tip" class="alert alert-info">
     {{ tip.translation(app.request.locale).content }}
     <div class="pull-right">
         <a id="thumbs-up" class="thumb" href="{{ path('tip_feedback', {'id': tip.id, 'feedback': 'like'}) }}">
@@ -23,8 +23,10 @@
         var clickedElement = $(this);
         var icon = clickedElement.html();
         clickedElement.html('<i class="fa fa-fw fa-spinner fa-pulse"></i>');
-        $.get($(this).attr('href'), null, function() {
+        $.get($(this).attr('href')).done(function(data) {
             clickedElement.html(icon);
+            console.log(data);
+            $('#tamago-tip').html(data.tip);
         });
     });
 </script>
