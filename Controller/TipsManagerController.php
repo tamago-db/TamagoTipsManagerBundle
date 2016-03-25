@@ -16,16 +16,23 @@ class TipsManagerController extends Controller
 
         // 404 if no tips
         if (!$total = count($transUnits)) {
-            return new Response('', Response::HTTP_NOT_FOUND);
+            return new Response('');
         }
 
         // Get a random tip
         $random = random_int(0, $total-1);
         $transUnit = $transUnits[$random];
 
+        // 404 if no translation for selected tip
+        // @todo Implement a fallback or limit query to tips with translations
+        if (!$transUnit->hasTranslation($request->getLocale())) {
+            return new Response('');
+        }
+
         // Retrieve meta data
         $repositoryTamago = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
         $metaEntity = $repositoryTamago->singleton($transUnit, $request->getLocale());
+
 
         // Increment view count
         $metaEntity->setViewCount($metaEntity->getViewCount() + 1);
