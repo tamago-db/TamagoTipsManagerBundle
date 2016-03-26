@@ -12,7 +12,6 @@ tip_stats:
 
 lexik_translation_edition:
     resource: "@LexikTranslationBundle/Resources/config/routing.yml"
-    prefix: /_tips
 
 _tip_lexik_edition:
     path: /editor
