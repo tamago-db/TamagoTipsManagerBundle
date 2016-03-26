@@ -88,7 +88,7 @@ class TipsManagerController extends Controller
 
     /**
      * Render stats page.
-     * 
+     *
      * @return Response
      */
     public function statsAction()

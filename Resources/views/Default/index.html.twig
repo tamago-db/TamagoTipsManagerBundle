@@ -3,18 +3,20 @@
         text-decoration: none;
     }
 </style>
-{% include 'TamagoTipsManagerBundle:Default:tip.html.twig' %}
+
+<div id="tamago-tip-container">
+    {% include 'TamagoTipsManagerBundle:Default:tip.html.twig' %}
+</div>
 
 <script>
-    $('a.thumb').on('click', function(event) {
-        event.preventDefault();
+    {# Monitor a.thumb clicks against document #}
+    $(document).on('click', 'a.thumb', function(event) {
+        event.preventDefault();  {# Prevent the link from clicking through to a new page #}
         var clickedElement = $(this);
-        var icon = clickedElement.html();
         clickedElement.html('<i class="fa fa-fw fa-spinner fa-pulse"></i>');
         $.get($(this).attr('href')).done(function(data) {
-            clickedElement.html(icon);
-            console.log(data);
-            $('#tamago-tip').html(data);
+            {# Replace with div block returned from server #}
+            $('#tamago-tip-container').html(data);
         });
     });
 </script>
