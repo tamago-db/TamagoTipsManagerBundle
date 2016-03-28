@@ -70,7 +70,7 @@ class TipsManagerController extends Controller
     public function feedbackAction($id, $feedback, Request $request)
     {
         $repository = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
-        $tip = $repository->find($id);
+        $tip = $repository->findOneBy(array('lexikTransUnitId' => $id, 'locale' => $request->getLocale()));
 
         switch ($feedback) {
             case 'like':
