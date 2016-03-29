@@ -1,0 +1,22 @@
+<style>
+    a.thumb {
+        text-decoration: none;
+    }
+</style>
+
+<div id="tamago-tip-container">
+    {% include 'TamagoTipsManagerBundle:Default:tip.html.twig' %}
+</div>
+
+<script>
+    {# Monitor a.thumb clicks against document #}
+    $(document).on('click', 'a.thumb', function(event) {
+        event.preventDefault();  {# Prevent the link from clicking through to a new page #}
+        var clickedElement = $(this);
+        clickedElement.html('<i class="fa fa-fw fa-spinner fa-pulse"></i>');
+        $.get($(this).attr('href')).done(function(data) {
+            {# Replace with div block returned from server #}
+            $('#tamago-tip-container').html(data);
+        });
+    });
+</script>
