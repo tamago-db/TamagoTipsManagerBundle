@@ -1,5 +1,5 @@
 tip_feedback:
-    path: /tip/{id}/feedback/{feedback}
+    path: /tip/{id}/feedback/{feedback}/domain/{domain}
     defaults: { _controller: TamagoTipsManagerBundle:TipsManager:feedback }
 
 tip_show:

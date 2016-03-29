@@ -15,11 +15,11 @@ class TipsManagerController extends Controller
      * @param Request $request
      * @return TransUnit
      */
-    private function getTipTransUnit(Request $request)
+    private function getTipTransUnit(Request $request, $domain)
     {
         $repositoryTransUnit = $this->getDoctrine()->getManager()->getRepository('LexikTranslationBundle:TransUnit');
 
-        $transUnits = $repositoryTransUnit->findByDomain('tips-general');
+        $transUnits = $repositoryTransUnit->findByDomain($domain);
 
         // 404 if no tips
         if (!$total = count($transUnits)) {
@@ -53,9 +53,9 @@ class TipsManagerController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $domain)
     {
-        $transUnit = $this->getTipTransUnit($request);
+        $transUnit = $this->getTipTransUnit($request, $domain);
         return $this->render('TamagoTipsManagerBundle:Default:index.html.twig', ['tip' => $transUnit]);
     }
 
@@ -67,7 +67,7 @@ class TipsManagerController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function feedbackAction($id, $feedback, Request $request)
+    public function feedbackAction($id, $feedback, $domain, Request $request)
     {
         $repository = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
         $tip = $repository->findOneBy(array('lexikTransUnitId' => $id, 'locale' => $request->getLocale()));
@@ -82,8 +82,8 @@ class TipsManagerController extends Controller
         }
         $this->getDoctrine()->getManager()->flush();
 
-        $transUnit = $this->getTipTransUnit($request);
-        return $this->render('TamagoTipsManagerBundle:Default:tip.html.twig', ['tip' => $transUnit]);
+        $transUnit = $this->getTipTransUnit($request, $domain);
+        return $this->render('TamagoTipsManagerBundle:Default:tip.html.twig', ['tip' => $transUnit, 'domain' => $domain]);
     }
 
     /**
