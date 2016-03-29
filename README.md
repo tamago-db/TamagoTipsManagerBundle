@@ -113,10 +113,16 @@ The stats page will be available here:
 
 * `/_tips/stats`
 
+A screenshot of the stats page:
 ![stats page screen](https://github.com/tamago-db/TamagoTipsManagerBundle/blob/master/Resources/doc/StatsScreen.JPG)
+
+________________________________
 
 The page to edit/add tips will be available here:
 
 * `/_tips/editor`
 
+A screenshot of the edition page:
 ![edition page screen](https://github.com/tamago-db/TamagoTipsManagerBundle/blob/master/Resources/doc/TranslationsScreen.JPG)
+
+________________________________
