@@ -14,6 +14,9 @@ The idea is to:
 You can also provide feedback for a tip through like/dislike buttons.
 The feedback and other details related to the tips can be viewed on a stats page.
 
+Here is a screenshot of what an example tip looks like:
+![tip screenshot](https://raw.githubusercontent.com/tamago-db/TamagoTipsManagerBundle/master/Resources/doc/TipScreenshot.png)
+
 ## **Installation**
 
 Add the bundle to your `composer.json` file:
@@ -62,21 +65,7 @@ php app/console doctrine:database:create
 php app/console doctrine:schema:update
 ```
 
-#### Download the hinclude.js (from [hinclude.js](http://mnot.github.io/hinclude/))
-
-Save it under 'web' directory of your application
-Then include it in the required html view:
-
-```html
-<html>
-    <head>
-        <title>...</title>
-        // ...
-        <script src="/hinclude.js" type="text/javascript"></script>
-        // ...
-```
-
-Render in the pages where you want the tips to show up:
+#### Render in the pages where you want the tips to show up
 
 ```html
 {{ render(controller('TamagoTipsManagerBundle:TipsManager:index', {'domain': 'some-domain-name'})) }}
@@ -115,7 +104,7 @@ The stats page will be available here:
 * `/_tips/stats`
 
 A screenshot of the stats page:
-![stats page screen](https://github.com/tamago-db/TamagoTipsManagerBundle/blob/master/Resources/doc/StatsScreen.JPG)
+![stats page screen](https://raw.githubusercontent.com/tamago-db/TamagoTipsManagerBundle/master/Resources/doc/StatsScreen.JPG)
 
 ________________________________
 
@@ -124,6 +113,6 @@ The page to edit/add tips will be available here:
 * `/_tips/editor`
 
 A screenshot of the edition page:
-![edition page screen](https://github.com/tamago-db/TamagoTipsManagerBundle/blob/master/Resources/doc/TranslationsScreen.JPG)
+![edition page screen](https://raw.githubusercontent.com/tamago-db/TamagoTipsManagerBundle/master/Resources/doc/TranslationsScreen.JPG)
 
 ________________________________
