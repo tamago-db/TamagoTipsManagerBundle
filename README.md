@@ -73,10 +73,6 @@ php app/console doctrine:schema:update
 The value of 'domain' attribute in above should be the name of the domain which the tips belong to.
 You can split tips into multiple categories/domains.
 
-OR
-
-Refer to the Symfony documentation about hinclude [here](http://symfony.com/doc/current/book/templating.html#asynchronous-content-with-hinclude-js)
-
 
 ## **Configuration**
 
