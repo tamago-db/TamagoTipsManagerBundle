@@ -12,7 +12,7 @@ env:
 before_script:
   - composer self-update
   - composer require symfony/symfony:${SYMFONY_VERSION} --no-update
-  - composer install --dev --prefer-source
+  - composer install --prefer-source
 
 script: phpunit --coverage-text
 
