@@ -8,6 +8,8 @@ class DefaultControllerTest extends WebTestCase
 {
     public function testIndex()
     {
+        $this->markTestIncomplete('Refactor');
+
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/hello/Fabien');
