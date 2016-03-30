@@ -11,7 +11,8 @@ namespace Tamago\TipsManagerBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 use Tamago\TipsManagerBundle\Entity\TamagoTransUnitMeta;
 
-class TipRepository extends EntityRepository{
+class TipRepository extends EntityRepository
+{
     public function count()
     {
         return $this->createQueryBuilder('t')->select('COUNT(t)')->getQuery()->getSingleScalarResult();
@@ -26,7 +27,7 @@ class TipRepository extends EntityRepository{
 
     public function singleton($transUnit, $locale)
     {
-        $metaEntity = $this->findOneBy(array('lexikTransUnitId' => $transUnit->getId(), 'locale' => $locale));
+        $metaEntity = $this->findOneBy(['lexikTransUnitId' => $transUnit->getId(), 'locale' => $locale]);
         if(!$metaEntity){
             $metaEntity = new TamagoTransUnitMeta();
             $metaEntity->setLexikTransUnitId($transUnit->getId());

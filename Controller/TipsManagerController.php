@@ -17,23 +17,22 @@ class TipsManagerController extends Controller
      */
     private function getTipTransUnit(Request $request, $domain)
     {
-        $repositoryTransUnit = $this->getDoctrine()->getManager()->getRepository('LexikTranslationBundle:TransUnit');
+        $transUnitRepository = $this->getDoctrine()->getManager()->getRepository('LexikTranslationBundle:TransUnit');
 
-        $transUnits = $repositoryTransUnit->getAllByLocaleAndDomain($request->getLocale(), $domain);
+        // Note that getAllByLocaleAndDomain return arrays rather than entities; presumably for performance reasons
+        $transUnits = $transUnitRepository->getAllByLocaleAndDomain($request->getLocale(), $domain);
 
         // Throw exception if not tips
         if (!$total = count($transUnits)) {
             throw new \RuntimeException('No tips in database');
         }
 
-        // Get a random tip
+        // Get a random tip from the array
         $random = random_int(0, $total-1);
-        $transUnit = $transUnits[$random];
 
-        // Throw exception if we get this far but still don't have a translation for selected tip
-        if (!$transUnit->hasTranslation($request->getLocale())) {
-            throw new \RuntimeException('Tip not translated');
-        }
+        // Now retrieve a single TransUnit entity
+        $transUnitId = $transUnits[$random]['id'];
+        $transUnit = $transUnitRepository->find($transUnitId);
 
         // Retrieve meta data
         $repositoryTamago = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
