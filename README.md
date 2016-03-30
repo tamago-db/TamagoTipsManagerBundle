@@ -1,6 +1,7 @@
 # Overview
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/a4467ecd-4467-4551-bb58-7486d298d316/big.png)](https://insight.sensiolabs.com/projects/a4467ecd-4467-4551-bb58-7486d298d316)
+[![Build Status](https://travis-ci.org/tamago-db/TamagoTipsManagerBundle.svg?branch=master)](https://travis-ci.org/tamago-db/TamagoTipsManagerBundle)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/a4467ecd-4467-4551-bb58-7486d298d316/mini.png)](https://insight.sensiolabs.com/projects/a4467ecd-4467-4551-bb58-7486d298d316)
 
 This Symfony bundle allows to integrate a Tip Manager in your Symfony application.
 The Tip Manager shows you tips relevant to your application. The tips can be seen in different languages.
