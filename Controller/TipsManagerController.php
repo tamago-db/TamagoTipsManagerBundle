@@ -19,9 +19,9 @@ class TipsManagerController extends Controller
     {
         $repositoryTransUnit = $this->getDoctrine()->getManager()->getRepository('LexikTranslationBundle:TransUnit');
 
-        $transUnits = $repositoryTransUnit->findByDomain($domain);
+        $transUnits = $repositoryTransUnit->getAllByLocaleAndDomain($request->getLocale(), $domain);
 
-        // 404 if no tips
+        // Throw exception if not tips
         if (!$total = count($transUnits)) {
             throw new \RuntimeException('No tips in database');
         }
@@ -30,8 +30,7 @@ class TipsManagerController extends Controller
         $random = random_int(0, $total-1);
         $transUnit = $transUnits[$random];
 
-        // 404 if no translation for selected tip
-        // @todo Implement a fallback or limit query to tips with translations
+        // Throw exception if we get this far but still don't have a translation for selected tip
         if (!$transUnit->hasTranslation($request->getLocale())) {
             throw new \RuntimeException('Tip not translated');
         }
@@ -55,8 +54,13 @@ class TipsManagerController extends Controller
      */
     public function indexAction(Request $request, $domain)
     {
-        $transUnit = $this->getTipTransUnit($request, $domain);
-        return $this->render('TamagoTipsManagerBundle:Default:index.html.twig', ['tip' => $transUnit]);
+        try {
+            $transUnit = $this->getTipTransUnit($request, $domain);
+            return $this->render('TamagoTipsManagerBundle:Default:index.html.twig', ['tip' => $transUnit]);
+        } catch (\RuntimeException $e) {
+            // Catch exception and return 204
+            return new Response(null, Response::HTTP_NO_CONTENT);
+        }
     }
 
     /**
