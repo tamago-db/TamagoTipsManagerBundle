@@ -77,6 +77,19 @@ OR
 
 Refer to the Symfony documentation about hinclude [here](http://symfony.com/doc/current/book/templating.html#asynchronous-content-with-hinclude-js)
 
+
+## **Configuration**
+
+#### Minimum Configuration 
+
+ You must at least define a fallback locale(s). You can skip this step if you are already using LexikTranslationBundle. 
+
+```html
+lexik_translation:
+    fallback_locale: [<locale>] 
+    managed_locales: [ <locale1>, <local2>, ... ]
+```
+
 ## **Import translations**
 
 To import translations files content into your database, place tip translation YAML files somewhere in your project
