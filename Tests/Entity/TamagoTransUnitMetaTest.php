@@ -23,5 +23,6 @@ class TamagoTransUnitMetaTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, $meta->getViewCount());
 
     }
+    
 
 }
