@@ -15,6 +15,7 @@ You can also provide feedback for a tip through like/dislike buttons.
 The feedback and other details related to the tips can be viewed on a stats page.
 
 Here is a screenshot of what an example tip looks like:
+
 ![tip screenshot](https://raw.githubusercontent.com/tamago-db/TamagoTipsManagerBundle/master/Resources/doc/TipScreenshot.png)
 
 ## **Installation**
