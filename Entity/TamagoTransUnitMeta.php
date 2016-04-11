@@ -53,6 +53,11 @@ class TamagoTransUnitMeta
     protected $key;
 
     /**
+     * @ORM\Column(type="string", name="identifier")
+     */
+    protected $identifier;
+
+    /**
      * @return mixed
      */
     public function getViewCount()
@@ -162,6 +167,22 @@ class TamagoTransUnitMeta
     public function setKey($key)
     {
         $this->key = $key;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdentifier()
+    {
+        return $this->identifier;
+    }
+
+    /**
+     * @param mixed $identifier
+     */
+    public function setIdentifier($identifier)
+    {
+        $this->identifier = $identifier;
     }
 
 }

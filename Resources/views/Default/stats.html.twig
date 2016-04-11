@@ -14,12 +14,13 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th style="text-align: center">{{ 'translations.id'|trans({}, 'TamagoTipsManagerBundle') }}</th>
-                        <th style="text-align: center">{{ 'translations.key'|trans({}, 'TamagoTipsManagerBundle') }}</th>
-                        <th style="text-align: center">{{ 'translations.locale'|trans({}, 'TamagoTipsManagerBundle') }}</th>
-                        <th style="text-align: center">{{ 'translations.view_count'|trans({}, 'TamagoTipsManagerBundle') }}</th>
-                        <th style="text-align: center">{{ 'translations.likes'|trans({}, 'TamagoTipsManagerBundle') }}</th>
-                        <th style="text-align: center">{{ 'translations.dislikes'|trans({}, 'TamagoTipsManagerBundle') }}</th>
+                        <th style="text-align: center">Id</th>
+                        <th style="text-align: center">Key</th>
+                        <th style="text-align: center">Locale</th>
+                        <th style="text-align: center">View Count</th>
+                        <th style="text-align: center">Likes</th>
+                        <th style="text-align: center">Dislikes</th>
+                        <th style="text-align: center">Identifier</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +32,7 @@
                         <td>{{ stat.viewCount }}</td>
                         <td>{{ stat.likes }}</td>
                         <td>{{ stat.dislikes }}</td>
+                        <td>{{ stat.identifier }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
