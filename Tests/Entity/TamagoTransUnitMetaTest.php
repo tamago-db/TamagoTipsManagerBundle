@@ -13,4 +13,16 @@ class TamagoTransUnitMetaTest extends \PHPUnit_Framework_TestCase
         $meta->setLocale('en');
         $this->assertEquals('en', $meta->getLocale());
     }
+
+
+    public function testViewCount()
+    {
+        $meta = new TamagoTransUnitMeta();
+        $this->assertNull($meta->getViewCount());
+        $meta->setViewCount(0);
+        $this->assertEquals(0, $meta->getViewCount());
+
+    }
+    
+
 }

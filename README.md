@@ -15,6 +15,7 @@ You can also provide feedback for a tip through like/dislike buttons.
 The feedback and other details related to the tips can be viewed on a stats page.
 
 Here is a screenshot of what an example tip looks like:
+
 ![tip screenshot](https://raw.githubusercontent.com/tamago-db/TamagoTipsManagerBundle/master/Resources/doc/TipScreenshot.png)
 
 ## **Installation**
@@ -73,9 +74,18 @@ php app/console doctrine:schema:update
 The value of 'domain' attribute in above should be the name of the domain which the tips belong to.
 You can split tips into multiple categories/domains.
 
-OR
 
-Refer to the Symfony documentation about hinclude [here](http://symfony.com/doc/current/book/templating.html#asynchronous-content-with-hinclude-js)
+## **Configuration**
+
+#### Minimum Configuration 
+
+ You must at least define a fallback locale(s). You can skip this step if you are already using LexikTranslationBundle. 
+
+```html
+lexik_translation:
+    fallback_locale: [<locale>] 
+    managed_locales: [ <locale1>, <local2>, ... ]
+```
 
 ## **Import translations**
 
