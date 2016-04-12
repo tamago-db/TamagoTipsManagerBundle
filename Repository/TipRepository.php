@@ -51,27 +51,19 @@ class TipRepository extends EntityRepository
 
     public function findByLexikJoinedToTamago($domain, $locale, $identifier){
         $em = $this->getEntityManager();
-        /*$query = $em->createQuery(
-                'SELECT sub.id, sub.domain, sub.lexik_trans_unit_id, sub.locale, sub.identifier
-                 FROM
 
-                (SELECT ltu.id, ltu.domain, ttu.lexik_trans_unit_id, ttu.locale, ttu.identifier
-                FROM LexikTranslationBundle:TransUnit ltu left join TamagoTipsManagerBundle:TamagoTransUnitMeta ttu
-                ON ltu.id = ttu.lexik_trans_unit_id
-                WHERE ltu.domain = :domain) AS sub
-
-                WHERE (sub.identifier = :identifier OR sub.identifier IS NULL)
-                AND (sub.locale = :locale OR sub.locale IS NULL)'
-                )->setParameter('domain', $domain)->setParameter('identifier', $identifier)->setParameter('locale', $locale);*/
-
-        $subQuery = $em->createQueryBuilder('ltu')->select('ltu.id', 'ltu.domain', 'ttu.lexik_trans_unit_id', 'ttu.locale', 'ttu.identifier')
+        $query = $em->createQueryBuilder()->select('ltu')
             ->from('LexikTranslationBundle:TransUnit', 'ltu')
-            ->leftJoin('ltu', 'TamagoTipsManagerBundle:TamagoTransUnitMeta', 'ttu', 'ltu.id = ttu.lexik_trans_unit_id')
+            ->leftJoin('TamagoTipsManagerBundle:TamagoTransUnitMeta','ttu', \Doctrine\ORM\Query\Expr\Join::WITH, 'ltu.id = ttu.lexikTransUnitId')
             ->where('ltu.domain', $domain);
 
-        $result = $subQuery->select('id', 'domain', 'lexik_trans_unit_id', 'locale', 'identifier')
-            ->where('identifier', $identifier)->orWhere('identifier', null)
-            ->andWhere('locale', $locale)->orWhere('locale', null)->getQuery();
+        $result = $query->select()
+            ->where('ttu.identifier = :identifier OR ttu.identifier = :nullIdentifier')
+            ->andWhere('ttu.locale = :locale OR ttu.locale = :nullLocale')
+            ->setParameter('identifier', $identifier)
+            ->setParameter('nullIdentifier', null)
+            ->setParameter('locale', $locale)
+            ->setParameter('nullLocale', null)->getQuery();
 
         $transUnits = $result->getArrayResult();
         return $transUnits;

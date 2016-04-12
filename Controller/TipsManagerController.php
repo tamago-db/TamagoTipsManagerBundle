@@ -24,7 +24,6 @@ class TipsManagerController extends Controller
 
         // Note that getAllByLocaleAndDomain return arrays rather than entities; presumably for performance reasons
         //$transUnits = $transUnitRepository->getAllByLocaleAndDomain($request->getLocale(), $domain);
-
         $transUnits = $transUnitRepository->findByLexikJoinedToTamago($domain, $request->getLocale(), $identifier);
 
         // Throw exception if not tips
@@ -58,6 +57,7 @@ class TipsManagerController extends Controller
      * @param $identifier
      * @return Response
      */
+
     public function indexAction(Request $request, $domain, $identifier)
     {
         try {
