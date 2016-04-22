@@ -19,12 +19,10 @@ class TipsManagerController extends Controller
      */
     private function getTipTransUnit(Request $request, $domain, $identifier)
     {
-        //$transUnitRepository = $this->getDoctrine()->getManager()->getRepository('LexikTranslationBundle:TransUnit');
-        $transUnitRepository = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
+        $transUnitRepository = $this->getDoctrine()->getManager()->getRepository('LexikTranslationBundle:TransUnit');
 
         // Note that getAllByLocaleAndDomain return arrays rather than entities; presumably for performance reasons
-        //$transUnits = $transUnitRepository->getAllByLocaleAndDomain($request->getLocale(), $domain);
-        $transUnits = $transUnitRepository->findByLexikJoinedToTamago($domain, $request->getLocale(), $identifier);
+        $transUnits = $transUnitRepository->getAllByLocaleAndDomain($request->getLocale(), $domain);
 
         // Throw exception if not tips
         if (!$total = count($transUnits)) {
@@ -82,7 +80,7 @@ class TipsManagerController extends Controller
     public function feedbackAction($id, $feedback, $domain, Request $request, $identifier)
     {
         $repository = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
-        $tip = $repository->findOneBy(array('lexikTransUnitId' => $id, 'locale' => $request->getLocale()));
+        $tip = $repository->findOneBy(array('lexikTransUnitId' => $id, 'locale' => $request->getLocale(), 'identifier' => $identifier));
 
         switch ($feedback) {
             case 'like':

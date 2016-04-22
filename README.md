@@ -69,9 +69,9 @@ php app/console doctrine:schema:update
 #### Render in the pages where you want the tips to show up
 
 ```html
-{{ render(controller('TamagoTipsManagerBundle:TipsManager:index', {'domain': 'some-domain-name'})) }}
+{{ render(controller('TamagoTipsManagerBundle:TipsManager:index', {'domain': 'some-domain-name', 'identifier': 'my-identifier'})) }}
 ```
-The value of 'domain' attribute in above should be the name of the domain which the tips belong to.
+The values of 'domain' and 'identifier' attributes in above should respectively be the custom names of the domain and identifier which the tips belong to.
 You can split tips into multiple categories/domains.
 
 
