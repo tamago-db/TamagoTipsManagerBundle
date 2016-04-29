@@ -2,6 +2,7 @@
 
 namespace Tamago\TipsManagerBundle\Controller;
 
+use Doctrine\ORM\Query\QueryException;
 use Lexik\Bundle\TranslationBundle\Model\TransUnit;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,10 +20,16 @@ class TipsManagerController extends Controller
      */
     private function getTipTransUnit(Request $request, $domain, $identifier)
     {
-        $transUnitRepository = $this->getDoctrine()->getManager()->getRepository('LexikTranslationBundle:TransUnit');
+        $em = $this->getDoctrine()->getManager();
+        $transUnitRepository = $em->getRepository('LexikTranslationBundle:TransUnit');
 
-        // Note that getAllByLocaleAndDomain return arrays rather than entities; presumably for performance reasons
-        $transUnits = $transUnitRepository->getAllByLocaleAndDomain($request->getLocale(), $domain);
+        try {
+            // Note that getAllByLocaleAndDomain return arrays rather than entities; presumably for performance reasons
+            $transUnits = $transUnitRepository->getAllByLocaleAndDomain($request->getLocale(), $domain);
+        } catch (QueryException $e) {
+            die('foo');
+            throw new \RuntimeException('Tips database not configured');
+        }
 
         // Throw exception if not tips
         if (!$total = count($transUnits)) {
@@ -37,12 +44,12 @@ class TipsManagerController extends Controller
         $transUnit = $transUnitRepository->find($transUnitId);
 
         // Retrieve meta data
-        $repositoryTamago = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
+        $repositoryTamago = $em->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
         $metaEntity = $repositoryTamago->singleton($transUnit, $request->getLocale(), $identifier);
 
         // Increment view count
         $metaEntity->setViewCount($metaEntity->getViewCount() + 1);
-        $this->getDoctrine()->getManager()->flush();
+        $em->flush();
 
         return $transUnit;
     }
@@ -79,7 +86,8 @@ class TipsManagerController extends Controller
      */
     public function feedbackAction($id, $feedback, $domain, Request $request, $identifier)
     {
-        $repository = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
         $tip = $repository->findOneBy(array('lexikTransUnitId' => $id, 'locale' => $request->getLocale(), 'identifier' => $identifier));
 
         switch ($feedback) {
@@ -90,7 +98,7 @@ class TipsManagerController extends Controller
                 $tip->setDislikes($tip->getDislikes() + 1);
                 break;
         }
-        $this->getDoctrine()->getManager()->flush();
+        $em->flush();
 
         $transUnit = $this->getTipTransUnit($request, $domain, $identifier);
         return $this->render('TamagoTipsManagerBundle:Default:tip.html.twig', ['tip' => $transUnit, 'domain' => $domain, 'identifier' => $identifier]);
@@ -103,7 +111,8 @@ class TipsManagerController extends Controller
      */
     public function statsAction()
     {
-        $repository = $this->getDoctrine()->getManager()->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('TamagoTipsManagerBundle:TamagoTransUnitMeta');
         $stats = $repository->stats();
 
         return $this->render('TamagoTipsManagerBundle:Default:stats.html.twig', ['stats' => $stats]);
