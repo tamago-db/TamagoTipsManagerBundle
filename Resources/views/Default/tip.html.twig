@@ -1,10 +1,11 @@
 <div id="tamago-tip" class="alert alert-info">
-    {{ tip.translation(app.request.locale).content }}
+    {{ tip.content }}
+    {% set transUnit = tip.transUnit %}
     <div class="pull-right">
-        <a id="thumbs-up" class="thumb" href="{{ path('tip_feedback', {'id': tip.id, 'feedback': 'like', 'domain': tip.domain, 'identifier': identifier}) }}">
+        <a id="thumbs-up" class="thumb" href="{{ path('tip_feedback', {'id': transUnit.id, 'feedback': 'like', 'domain': transUnit.domain, 'identifier': identifier}) }}">
             <i class="fa fa-fw fa-thumbs-up"></i>
         </a>
-        <a id="thumbs-down" class="thumb" href="{{ path('tip_feedback', {'id': tip.id, 'feedback': 'dislike', 'domain': tip.domain, 'identifier': identifier}) }}">
+        <a id="thumbs-down" class="thumb" href="{{ path('tip_feedback', {'id': transUnit.id, 'feedback': 'dislike', 'domain': transUnit.domain, 'identifier': identifier}) }}">
             <i class="fa fa-fw fa-thumbs-down"></i>
         </a>
         <button type="button" class="close" data-dismiss="alert" style="margin-left: 1em">&times;</button>
