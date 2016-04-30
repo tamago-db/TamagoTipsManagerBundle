@@ -10,8 +10,8 @@
     "homepage": "http://www.tamago-db.com/",
     "require": {
         "php": ">=5.3.9",
-        "symfony/symfony": "~2.7",
+        "symfony/symfony": "^2.8",
         "doctrine/orm": "^2.5.2",
-        "lexik/translation-bundle": "~3.1"
+        "lexik/translation-bundle": "^4.0"
     }
 }
