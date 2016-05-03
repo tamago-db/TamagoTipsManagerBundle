@@ -1,18 +1,13 @@
 <div id="tamago-tip" style="height: 100px" class="alert alert-info">
-    <div id="tip1" style="margin: 0%">
-        {{ tip.translation(app.request.locale).content }}
-
-        </div>
-    <div id="tip2" style="display: none">
-
-        {#{{ app.session.get('prev') }}#}
-
-        {#{{ dump(app.session.get('prev')) }}#}
-        {#{{ tip.translation(app.request.locale).content }}\#}
-        {#{{ tip1 }}#}
-
+    {#<div id="tip1" style="margin: 0%">#}
+        {#{{ tip.translation(app.request.locale).content }}#}
+        {#</div>#}
+    <div id="tip2" >
+        {#{{ tip1}}#}
+        {{ app.session.get('prev') }}
+{#<input type="hidden" name="ajay" id="ajay" value= "{{ tip.id }}"/>#}
     </div>
-
+     {#<p>hello ajay</p> </div>#}
 
     <div class="pull-right">
 
@@ -22,10 +17,10 @@
         <a id="thumbs-down" class="thumb" href="{{ path('tip_feedback', {'id': tip.id, 'feedback': 'dislike', 'domain': tip.domain}) }}">
             <i class="fa fa-fw fa-thumbs-down"></i>
         </a>
-        <a id="back" class="back" href="{{ path('tip_next', {'id':  tip.translation(app.request.locale).content,'domain': tip.domain}) }}">
+        <a id="back" class="back" href="{{ path('tip_next', {'domain': tip.domain}) }}">
             <i class="fa fa-fw fa-arrow-left"></i>
         </a>
-        <a id="next" class="next" href="{{ path('tip_prev', {'id':  tip.translation(app.request.locale).content, 'domain': tip.domain}) }}">
+        <a id="next" class="next" href="{{ path('tip_prev', {'id': tip.translation(app.request.locale).content, 'domain': tip.domain}) }}">
             <i class="fa fa-fw fa-arrow-right"></i>
         </a>
         <button type="button" class="close" data-dismiss="alert" style="margin-left: 1em">&times;</button>

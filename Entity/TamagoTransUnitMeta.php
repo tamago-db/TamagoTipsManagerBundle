@@ -51,6 +51,16 @@ class TamagoTransUnitMeta
      * @ORM\Column(type="string", name="lexik_key_name")
      */
     protected $key;
+    protected $click;
+
+    public function getClick()
+    {
+        return $this->click;
+    }
+    public function setClick($click)
+    {
+        $this->click = $click;
+    }
 
     /**
      * @return mixed

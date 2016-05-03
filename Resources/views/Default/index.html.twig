@@ -6,6 +6,7 @@
 
 <div id="tamago-tip-container">
     {% include 'TamagoTipsManagerBundle:Default:tip.html.twig' %}
+
 </div>
 
 <script>
@@ -16,7 +17,40 @@
         clickedElement.html('<i class="fa fa-fw fa-spinner fa-pulse"></i>');
         $.get($(this).attr('href')).done(function(data) {
             {# Replace with div block returned from server #}
+            $('#tamago-tip-container1').html(data);
+        });
+    });
+</script>
+
+<script>
+    {# Monitor a.thumb clicks against document #}
+    $(document).on('click', 'a.back', function(event) {
+        event.preventDefault();  {# Prevent the link from clicking through to a new page #}
+        $("#tip1").css({display: "none"});
+        $("#tip2").css({display: "block"});
+//        $("#tamgo-tip-container").css({display: "block"});
+        var clickedElement = $(this);
+        clickedElement.html('<i class="fa fa-fw fa-spinner fa-pulse"></i>');
+        $.get($(this).attr('href')).done(function(data) {
+            {#&#123;&#35; Replace with div block returned from server &#35;&#125;#}
             $('#tamago-tip-container').html(data);
+        });
+    });
+</script>
+
+<script>
+    {# Monitor a.thumb clicks against document #}
+    var count = 0;
+    $(document).on('click', 'a.next', function(event) {
+        event.preventDefault();  {# Prevent the link from clicking through to a new page #}
+//        $("#tip1").css({display: "block"});
+        $("#tip2").css({display: "none"});
+        var clickedElement = $(this);
+        clickedElement.html('<i class="fa fa-fw fa-spinner fa-pulse"></i>');
+        count++;
+        $.get($(this).attr('href')).done(function(data) {
+            {# Replace with div block returned from server #}
+           $('#tamago-tip-container').html(data);
         });
     });
 </script>
