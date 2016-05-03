@@ -44,7 +44,8 @@ composer update
 composer update tamago/tips-manager-bundle # to only update the bundle
 ```
 
-Register the bundles with your kernel:
+TamagoTipManagerBundle also installs LexikTranslationManagerBundle which it uses as the mechanism for storing and
+editing translated tips.  Make sure both bundles are registered with your kernel:
 
 ```php
 // in AppKernel::registerBundles()
@@ -58,6 +59,9 @@ $bundles = array(
 ```
 
 ## **Integration**
+
+:warning: Although LexikTranslationManagerBundle supports Doctrine storage types, TamagoTipManagerBundle currently only
+formally supports Doctrine ORM.
 
 #### Creating the database schema
 
@@ -79,12 +83,17 @@ You can split tips into multiple categories/domains.
 
 #### Minimum Configuration 
 
- You must at least define a fallback locale(s). You can skip this step if you are already using LexikTranslationBundle. 
+You can skip this step if you are already using LexikTranslationBundle.
+
+You must at least define a fallback locale(s).
 
 ```html
 lexik_translation:
     fallback_locale: [<locale>] 
     managed_locales: [ <locale1>, <local2>, ... ]
+    storage:
+        type: orm
+        object_manager: <entity/object manager name>
 ```
 
 ## **Import translations**
