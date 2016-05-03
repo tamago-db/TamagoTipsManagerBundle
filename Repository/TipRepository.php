@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Sanskriti
- * Date: 12/14/2015
- * Time: 3:37 PM
- */
 
 namespace Tamago\TipsManagerBundle\Repository;
 
