@@ -1,6 +1,6 @@
 {
     "name": "tamago/tips-manager-bundle",
-    "license": "proprietary",
+    "license": "MIT",
     "type": "symfony-bundle",
     "autoload": {
         "psr-4": { "Tamago\\TipsManagerBundle\\": "" }
